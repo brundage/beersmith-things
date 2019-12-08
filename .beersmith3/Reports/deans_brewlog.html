@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Dean's Brewsheet (version 2019-12-08)">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dean's Brewsheet (version 2019-12-08)</title>
+  <style name="base">
+    @media screen {
+      html {
+        font-size: 1em;
+      }
+    }
+    
+    @media print {
+      html {
+        font-size: 10px;
+      }
+    
+      .print-page-break {
+        page-break-before: always;
+      }
+    }
+    
+    html {
+      line-height: 1.2;
+    }
+    
+    body {
+      margin: 0;
+      width: 100%;
+    }
+    
+    h1, h2, h3 { padding: 0; text-decoration: underline; }
+    
+    h1 { font-size: 160%; margin: 0 0 0.25em 0; }
+    h2 { font-size: 120%; margin: 0 0 0.25em 0; }
+    h3 { font-size: 110%; margin: 0 0 0.25em 0; }
+    
+    p { margin: 0; padding: 0; }
+
+    .checklist {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .checklist li {
+      margin: 0.25em 0;
+      padding: 0;
+    }
+
+    .checklist h1, .checklist h2, .checklist h3 {
+      text-decoration: none;
+    }
+
+    .checkbox {
+      border: solid 1px #000;
+      border-radius: 4px;
+      -o-border-radius: 4px;
+      -moz-border-radius: 4px;
+      -ms-border-radius: 4px;
+      -webkit-border-radius: 4px;
+      height: 1em;
+      padding-right: 1.1em;
+      margin-right: 0.5em;
+    }
+
+    .pull-left {
+      float: left;
+    }
+
+    .pull-right {
+      float: right;
+    }
+  </style>
+
+  <style name="grid">
+    /* Don't overthink it grid http://css-tricks.com/dont-overthink-it-grids/ */
+    *, *:after, *:before {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    .grid {
+      overflow: hidden;
+    }
+
+    .grid:after, .clearfix:before, .clearfix:after {
+        content: " "; /* 1 */
+        display: table; /* 2 */
+    }
+
+    .grid:after, .clearfix:after {
+      clear: both;
+    }
+
+    .clearfix {
+      *zoom: 1;
+    }
+
+    [class*='col-'] {
+      float: left;
+      padding-right: 0.8em;
+    }
+
+    [class*='col-']:last-of-type {
+      padding-right: 0;
+    }
+
+    .col-1-25  { width: 4%; }
+    .col-1-20  { width: 5%; }
+    .col-2-25  { width: 8%; }
+    .col-1-12  { width: 8.3%; }
+    .col-1-10  { width: 10%; }
+    .col-1-8   { width: 12.5%; }
+    .col-1-6   { width: 16.66%; }
+    .col-1-5   { width: 20%; }
+    .col-6-25  { width: 24%; }
+    .col-1-4   { width: 25%; }
+    .col-8-25  { width: 32%; }
+    .col-1-3   { width: 33.33%; }
+    .col-3-8   { width: 37.5; }
+    .col-3-10  { width: 30%; }
+    .col-2-5   { width: 40%; }
+    .col-5-12  { width: 41.7%; }
+    .col-1-2   { width: 50%; }
+    .col-7-12  { width: 58.3%; }
+    .col-3-5   { width: 60%; }
+    .col-5-8   { width: 62.5%; }
+    .col-2-3   { width: 66.66%; }
+    .col-17-25 { width: 68%; }
+    .col-7-10  { width: 70%; }
+    .col-3-4   { width: 75%; }
+    .col-4-5   { width: 80%; }
+    .col-5-6   { width: 83.33%; }
+    .col-7-8   { width: 87.5%; }
+    .col-9-10  { width: 90%; }
+    .col-11-12 { width: 91.7%; }
+  </style>
+
+  <style name="beersmith_cleanup">
+    .BeerSmithTable caption {
+      display: none !important;
+      visibility: hidden;
+    }
+
+    .BeerSmithTable th {
+      width: auto !important;
+    }
+
+    .cut-first-1 th:nth-child(1), .cut-first-1 td:nth-child(1) { display: none !important; visibility: hidden; }
+    .cut-last-1 th:nth-last-child(1), .cut-last-1 td:nth-last-child(1) { display: none !important; visibility: hidden; }
+    .cut-last-2 th:nth-last-child(2), .cut-last-2 td:nth-last-child(2) { display: none !important; visibility: hidden; }
+    .cut-last-3 th:nth-last-child(3), .cut-last-3 td:nth-last-child(3) { display: none !important; visibility: hidden; }
+  </style>
+</head>
+<body>
+
+  <div class="printpage">
+    <header class="grid">
+      <h1>$NAME</h1>
+      <div class="col-1-4"><strong>Brew Date</strong> $DATE</div>
+      <div class="col-1-4"><strong>OG</strong> $EST_OG</div>
+      <div class="col-1-4"><strong>Ratio</strong> $BITTERNESS_RATIO</div>
+      <div class="col-1-4"><strong>Brewer</strong> $BREWER</div>
+
+      <div class="col-1-4"><strong>Package Vol</strong> $BOTTLING_VOLUME</div>
+      <div class="col-1-4"><strong>IBU</strong> $IBU</div>
+      <div class="col-1-4"><strong>Effencicy</strong> $EFFICIENCY%</div>
+      <div class="col-1-4"><strong>Assistant</strong> $ASST_BREWER</div>
+
+    </header>
+
+    <section class="grid">
+      <div class="col-1-2">Fermentables</div>
+      <div class="col-1-2">Water Treatment</div>
+
+      <div class='col-1-10 colhead'>Actual</div>
+      <div class='col-2-5 cut-last-1 cut-last-2 cut-last-3'>$MASH_INGREDIENTS</div>
+
+      <div class='col-1-10 colhead'>Actual</div>
+      <div class='col-2-5 cut-last-1 cut-last-2 cut-last-3'>$WATER_PREP</div>
+
+    </section>
+
+    <section id="mash" class="grid">
+      <h2>Mash</h2>
+
+      <div class='col-2-25 colhead'>Temp</div>
+      <div class='col-2-25 colhead'>Start</div>
+      <div class='col-2-25 colhead'>Stop</div>
+      <div class='col-2-25 colhead'>pH</div>
+      <div class='col-17-25' id='mash-steps'>$MASH_STEPS</div>
+      
+      <div class='col-8-25 colhead'>&nbsp;</div>
+      <div class='col-17-25'>$SPARGE_STEPS</div>
+
+    </section>
+
+    <section id='lauter' class='grid'>
+      <h2>Lauter</h2>
+
+      <div class='col-1-5'>&nbsp;</div>
+      <div class='col-4-5'>First Runnings Gravity</div>
+
+      <div class='col-1-5'>&nbsp;</div>
+      <div class='col-4-5'>Lauter <em>until target pre-boil gravity of $PRE_BOIL_OG</em></div>
+
+      <div class='col-1-5'>&nbsp;</div>
+      <div class='col-4-5'>Final Runnings Gravity</div>
+
+      <div class='col-1-5'>&nbsp;</div>
+      <div class='col-4-5'>Final Runnings pH</div>
+
+      <div class='col-1-5'>&nbsp;</div>
+      <div class='col-4-5' id='mash-notes'>$MASH.NOTES</div>
+    </section>
+
+    <section id='boil'>
+      <h2>Boil $BOIL_TIME minutes</h2>
+
+      <div class='grid'>
+        <div class='col-1-10 colhead'>Actual</div>
+        <div class='col-2-5'>&nbsp;</div>
+        <div class='col-1-10 colhead'>Actual</div>
+        <div class='col-2-5'>&nbsp;</div>
+
+        <div class='col-1-10'>&nbsp;</div>
+        <div class='col-2-5'>Volume ($DISPLAY_BOIL_SIZE)</div>
+        <div class='col-1-10'>&nbsp;</div>
+        <div class='col-2-5'>Gravity ($PRE_BOIL_OG)</div>
+
+        <div class='col-1-10'>&nbsp;</div>
+        <div class='col-2-5'>Boil Start</div>
+        <div class='col-1-10'>&nbsp;</div>
+        <div class='col-2-5'>Kettle pH</div>
+      </div>
+
+      <h3>Boil Ingredients</h3>
+
+      <div class='grid'>
+        <div class='col-1-10 colhead'>Weight</div>
+        <div class='col-1-10 colhead'>Time</div>
+        <div class='col-4-5' id='boil-ingredients'>$BOIL_INGREDIENTS &nbsp;</div>
+
+        <div class='col-1-5'>&nbsp;</div>
+        <div class='col-4-5' id='steep-hops'>$STEEP_HOPS</div>
+
+        <div class='col-1-5'>&nbsp;</div>
+        <div class='col-4-5' id='bottling-ingredients'>$BOTTLING_INGREDIENTS</div>
+      </div>
+
+      <div class='grid'>
+        <div class='col-1-5'>&nbsp;</div>
+        <div class='col-4-5'>Knock Out Time</div>
+      </div>
+
+      <h3>Post-boil</h3>
+
+      <div class='grid'>
+        <div class='col-1-8 colhead'>Start</div>
+        <div class='col-1-8 colhead'>Stop</div>
+        <div class='col-3-4'>&nbsp;</div>
+
+        <div class='col-1-4'>&nbsp;</div>
+        <div class='col-3-4'>Whirlpool 20 minutes</div>
+
+        <div class='col-1-4'>&nbsp;</div>
+        <div class='col-3-4'>Transfer</div>
+
+        <div class='col-1-10 colhead'>Actual</div>
+        <div class='col-2-5'>&nbsp;</div>
+        <div class='col-1-10 colhead'>Actual</div>
+        <div class='col-2-5'>&nbsp;</div>
+
+        <div class='col-1-10'>&nbsp;</div>
+        <div class='col-2-5'>Volume (after whirlpool)</div>
+        <div class='col-1-10'>&nbsp;</div>
+        <div class='col-2-5'>Gravity ($EST_OG)</div>
+
+        <div class='col-1-10'>&nbsp;</div>
+        <div class='col-2-5'>Knockout Temperature</div>
+        <div class='col-1-10'>&nbsp;</div>
+        <div class='col-2-5'>Kettle pH</div>
+
+        <div class='col-1-10'>&nbsp;</div>
+        <div class='col-2-5'>Volume in fermenter ($DISPLAY_BATCH_SIZE)</div>
+
+        <div class='col-1-10'>&nbsp;</div>
+        <div class='col-2-5'>Vessel</div>
+      </div>
+
+    </section>
+
+    <section id='fermentation'>
+    <h2>Pitching</h2>
+
+    <div class="cut-first-1 cut-last-1 cut-last-2 cut-last-3">$FERMENT_INGREDIENTS</div>
+
+      <div class='grid'>
+        <div class='col-1-4'>Generation</div>
+        <div class='col-1-4'>Last Batch</div>
+        <div class='col-1-4'>Harvest Date</div>
+        <div class='col-1-4'>Cell Count</div>
+
+        <div class='col-1-4'>Viability</div>
+        <div class='col-1-4'>Pitched Volume</div>
+        <div class='col-1-4'>Wort Stability?</div>
+        <div class='col-1-4'>Smile</div>
+      </div>
+
+    </section>
+
+    <section id='fermentation-steps'>
+      $BOTTLING_INGREDIENTS
+      <div class="cut-last-1 cut-last-2 cut-last-3">$PRIMARY_STEP $PRIMARY_INGREDIENTS</div>
+      <div class="cut-last-1 cut-last-2 cut-last-3">$SECONDARY_STEP $SECONDARY_INGREDIENTS</div>
+      <div class="cut-last-1 cut-last-2 cut-last-3">$TERTIARY_STEP</div>
+    </section>
+
+
+    <section id="notes">
+      <h2>Notes</h2>
+      <p id='notes'>$NOTES</p>
+    </section>
+  </div>
+
+
+</body>
+</html>

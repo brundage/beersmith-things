@@ -1,0 +1,78 @@
+@media screen {
+  html {
+    font-size: 1em;
+  }
+}
+
+@media print {
+  html {
+    font-size: 10px;
+  }
+
+  .print-page-break {
+    page-break-before: always;
+  }
+}
+
+html {
+  line-height: 1.2;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+}
+
+h1, h2, h3 { padding: 0; text-decoration: underline; }
+
+h1 { font-size: 160%; margin: 0 0 0.25em 0; }
+h2 { font-size: 120%; margin: 0 0 0.25em 0; }
+h3 { font-size: 110%; margin: 0 0 0.25em 0; }
+
+p { margin: 0; padding: 0; }
+
+.BeerSmithTable caption {
+  display: none !important;
+  visibility: hidden;
+}
+
+
+.BeerSmithTable th {
+  width: auto !important;
+}
+
+.checklist {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.checklist li {
+  margin: 0.25em 0;
+  padding: 0;
+}
+
+.checklist h1, .checklist h2, .checklist h3 {
+  text-decoration: none;
+}
+
+.checkbox {
+  border: solid 1px #000;
+  border-radius: 4px;
+  -o-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  height: 1em;
+  padding-right: 1.1em;
+  margin-right: 0.5em;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+

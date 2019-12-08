@@ -1,0 +1,93 @@
+.BeerSmithTable caption {
+  display: none !important;
+  visibility: hidden;
+}
+
+
+.BeerSmithTable th {
+  width: auto !important;
+}
+
+#yeasts th,
+#yeasts td:nth-child(1),
+#yeasts td:nth-last-child(1),
+#yeasts td:nth-last-child(2),
+#yeasts td:nth-last-child(3)
+{
+  display: none !important;
+  visibility: hidden;
+}
+
+.cut_1 th:nth-last-child(1), .cut_1 td:nth-last-child(1) { display: none !important; visibility: hidden; }
+.cut_2 th:nth-last-child(2), .cut_2 td:nth-last-child(2) { display: none !important; visibility: hidden; }
+.cut_3 th:nth-last-child(3), .cut_3 td:nth-last-child(3) { display: none !important; visibility: hidden; }
+
+.remove_1_right_col th:nth-last-child(1),
+.remove_1_right_col td:nth-last-child(1) {
+  display: none !important;
+  visibility: hidden;
+}
+
+.remove_2_right_cols th:nth-last-child(1),
+.remove_2_right_cols th:nth-last-child(2),
+.remove_2_right_cols td:nth-last-child(1),
+.remove_2_right_cols td:nth-last-child(2) {
+  display: none !important;
+  visibility: hidden;
+}
+
+.remove_3_right_cols th:nth-last-child(1),
+.remove_3_right_cols th:nth-last-child(2),
+.remove_3_right_cols th:nth-last-child(3),
+.remove_3_right_cols td:nth-last-child(1),
+.remove_3_right_cols td:nth-last-child(2),
+.remove_3_right_cols td:nth-last-child(3) {
+  display: none !important;
+  visibility: hidden;
+}
+
+.remove_3_right_cols th {
+  font-size: 4em;
+}
+
+#mash-ingredients th:nth-last-child(1),
+#mash-ingredients th:nth-last-child(2),
+#mash-ingredients th:nth-last-child(3),
+#mash-ingredients td:nth-last-child(1),
+#mash-ingredients td:nth-last-child(2),
+#mash-ingredients td:nth-last-child(3)
+{
+  display: none !important;
+  visibility: hidden;
+}
+
+
+#water-prep td:nth-last-child(1), #water-prep th:nth-last-child(1),
+#water-prep td:nth-last-child(2), #water-prep th:nth-last-child(2),
+#water-prep td:nth-last-child(3), #water-prep th:nth-last-child(3)
+{
+  display: none !important;
+  visibility: hidden;
+}
+
+#first-wort-hops td:nth-last-child(2), #first-wort-hops th:nth-last-child(2),
+#first-wort-hops td:nth-last-child(3), #first-wort-hops th:nth-last-child(3)
+{
+  display: none !important;
+  visibility: hidden;
+}
+
+#boil-ingredients td:nth-last-child(2), #boil-ingredients th:nth-last-child(2),
+#boil-ingredients td:nth-last-child(3), #boil-ingredients th:nth-last-child(3),
+#steep-hops td:nth-last-child(2), #steep-hops th:nth-last-child(2),
+#steep-hops td:nth-last-child(3), #steep-hops th:nth-last-child(3),
+#bottling-ingredients td:nth-last-child(2), #bottling-ingredients th:nth-last-child(2),
+#bottling-ingredients td:nth-last-child(3), #bottling-ingredients th:nth-last-child(3)
+{
+  display: none !important;
+  visibility: hidden;
+}
+
+#fermentation-steps {
+  margin-top: 0.2em;
+}

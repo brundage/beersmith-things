@@ -1,0 +1,50 @@
+#!/bin/sh
+
+function log {
+  is_verbose && echo "[$(date --rfc-3339=seconds)]: $*"
+}
+
+
+function is_verbose {
+  [[ $VERBOSE -eq 1 ]]
+}
+
+
+usage() {
+	echo $(basename "$0"): ERROR: "$@" 1>&2
+	echo Usage: $(basename "$0") '[-v] [-d directory] 
+Deploy BeerSmith files
+	-2
+		Deploy BeerSmith version 2 files
+	-d directory
+		Deploy to directory (default $HOME)
+	-v
+		Verbose' 1>&2
+	exit 1
+}
+
+BASEDIR="$(dirname "$0")/.."
+BEERSMITH_VERSION=3
+RSYNC_OPTS="-aHSL"
+TARGET_DIR="$HOME"
+VERBOSE=0
+
+while : ; do
+  case "$1" in
+    -2) BEERSMITH_VERSION=2;;
+    -d) shift; TARGET_DIR="$1";;
+    -v) VERBOSE=1;;
+    --) shift; break;;
+    -*) usage "Bad argument $1";;
+     *) break;;
+  esac
+  shift
+done
+
+SOURCE_DIR="${BASEDIR}/.beersmith${BEERSMITH_VERSION}"
+
+is_verbose && RSYNC_OPTS="$RSYNC_OPTS -v"
+
+log "Deploying from $SOURCE_DIR to $TARGET_DIR"
+
+rsync $RSYNC_OPTS "$SOURCE_DIR" "$TARGET_DIR"
